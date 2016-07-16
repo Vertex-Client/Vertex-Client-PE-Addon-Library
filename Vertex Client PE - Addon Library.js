@@ -28,7 +28,7 @@ var Launcher = {
 const ADDON_NAME = "Example addon"; //Your addon's name
 const ADDON_DESC = "Adds example modules into Vertex Client PE."; //Your addon's description
 const ADDON_VERSION = "1.0"; //Your addon's version
-const TARGET_VERSION = "1.0"; //Your addon's target Vertex Client PE version (in this case we use Vertex Client PE v1.0)
+const TARGET_VERSION = "1.0.1"; //Your addon's target Vertex Client PE version (in this case we use Vertex Client PE v1.0.1)
 
 var modules = [];
 

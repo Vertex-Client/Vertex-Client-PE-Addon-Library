@@ -113,9 +113,10 @@ registerModule(secondExampleModule);
 ***************************************************************************************************************
 Other functions and variables you can use in your addon are the following:
 ##################################
-callVertexFunction(functionName, propArray);
->> Example: callVertexFunction("nuker", [exampleX, exampleY, exampleZ, 3, "cube"]); <<
-^^ In this example it will call VertexClientPE.nuker without having to copy the whole function into your addon. This also works for other functions. ^^
+callFunction(functionName, propArray);
+>> Example: callFunction("nuke", [getPlayerX(), getPlayerY(), getPlayerZ(), 3, "cube"]); <<
+^^ In this example it will call Vertex Client PE's nuke function without having to copy the whole function into your addon. This also works for other functions. ^^
+!! Make sure to put the parameters in an array, otherwise it won't work!
 ----------------------------------
 Launcher.isBlockLauncher();
 >> Example: Launcher.isBlockLauncher(); <<
@@ -138,10 +139,10 @@ Launcher.isMcpeMaster();
  */
 
 function addonLoadHook() {
-  if(Launcher.isBlockLauncher() || Launcher.isToolbox()) {
-    net.zhuoweizhang.mcpelauncher.ScriptManager.callScriptMethod("registerAddon", [ADDON_NAME, ADDON_DESC, ADDON_VERSION, TARGET_VERSION, modules]);
-  }
-  if(Launcher.isMcpeMaster()) {
+	if(Launcher.isBlockLauncher() || Launcher.isToolbox()) {
+		net.zhuoweizhang.mcpelauncher.ScriptManager.callScriptMethod("registerAddon", [ADDON_NAME, ADDON_DESC, ADDON_VERSION, TARGET_VERSION, modules]);
+	}
+	if(Launcher.isMcpeMaster()) {
 		com.mcbox.pesdk.mcpelauncher.ScriptManager.callScriptMethod("registerAddon", [ADDON_NAME, ADDON_DESC, ADDON_VERSION, TARGET_VERSION, modules]);
 	}
 }
@@ -151,11 +152,11 @@ function registerModule(obj) {
 	modules.push(obj);
 }
 
-function callVertexFunction(functionName, propArray) {
-  if(Launcher.isBlockLauncher() || Launcher.isToolbox()) {
-  	net.zhuoweizhang.mcpelauncher.ScriptManager.callScriptMethod("VertexClientPE." + functionName, propArray);
-  }
-  if(Launcher.isMcpeMaster()) {
-		com.mcbox.pesdk.mcpelauncher.ScriptManager.callScriptMethod("VertexClientPE." + functionName, propArray);
+function callFunction(functionName, propArray) {
+	if(Launcher.isBlockLauncher() || Launcher.isToolbox()) {
+		net.zhuoweizhang.mcpelauncher.ScriptManager.callScriptMethod(functionName, propArray);
+	}
+	if(Launcher.isMcpeMaster()) {
+		com.mcbox.pesdk.mcpelauncher.ScriptManager.callScriptMethod(functionName, propArray);
 	}
 }

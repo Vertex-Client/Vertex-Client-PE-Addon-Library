@@ -21,6 +21,12 @@ var Launcher = {
 	}
 };
 
+function Song(songTitle, songArtist, songUrl) {
+    this.title = songTitle || "Unknown";
+    this.artist = songArtist || "Unknown";
+    this.url = songUrl;
+}
+
 /**
 * YOUR ADDON CONTENT
 */
@@ -28,9 +34,10 @@ var Launcher = {
 const ADDON_NAME = "Example addon"; //Your addon's name
 const ADDON_DESC = "Adds example modules into Vertex Client PE."; //Your addon's description
 const ADDON_VERSION = "1.0"; //Your addon's version
-const TARGET_VERSION = "1.0.1"; //Your addon's target Vertex Client PE version (in this case we use Vertex Client PE v1.0.1)
+const TARGET_VERSION = "1.6"; //Your addon's target Vertex Client PE version (in this case we use Vertex Client PE v1.0.1)
 
 var modules = [];
+var songs = [];
 
 const Category = {
 	COMBAT: 0,
@@ -140,16 +147,31 @@ Launcher.isMcpeMaster();
 
 function addonLoadHook() {
 	if(Launcher.isBlockLauncher() || Launcher.isToolbox()) {
-		net.zhuoweizhang.mcpelauncher.ScriptManager.callScriptMethod("registerAddon", [ADDON_NAME, ADDON_DESC, ADDON_VERSION, TARGET_VERSION, modules]);
+		net.zhuoweizhang.mcpelauncher.ScriptManager.callScriptMethod("registerAddon", [ADDON_NAME, ADDON_DESC, ADDON_VERSION, TARGET_VERSION, modules, songs]);
 	}
 	if(Launcher.isMcpeMaster()) {
-		com.mcbox.pesdk.mcpelauncher.ScriptManager.callScriptMethod("registerAddon", [ADDON_NAME, ADDON_DESC, ADDON_VERSION, TARGET_VERSION, modules]);
+		com.mcbox.pesdk.mcpelauncher.ScriptManager.callScriptMethod("registerAddon", [ADDON_NAME, ADDON_DESC, ADDON_VERSION, TARGET_VERSION, modules, songs]);
 	}
 }
 
 function registerModule(obj) {
 	obj.source = ADDON_NAME;
 	modules.push(obj);
+}
+
+function registerSong(song) {
+	try {
+		if(!(song instanceof Song)) {
+			throw new TypeError("The registered value is not of the type Song.");
+			return;
+		}
+		song.prototype.source = ADDON_NAME;
+		songs.push(song);
+	} catch(e) {
+		if(e instanceof TypeError) {
+			print("TypeError: " + e);
+		}
+	}
 }
 
 function callFunction(functionName, propArray) {

@@ -176,7 +176,7 @@ function registerSong(song) {
 	}
 }
 
-function registerModule(obj) {
+function registerTile(obj) {
 	obj.source = ADDON_NAME;
 	tiles.push(obj);
 }

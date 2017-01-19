@@ -1,6 +1,6 @@
 /**
 *  Library made by peacestorm
-*  © 2016
+*  © 2016-2017
 */
 
 /**
@@ -34,8 +34,9 @@ function Song(songTitle, songArtist, songUrl, songGenre) {
 
 const ADDON_NAME = "Example addon"; //Your addon's name
 const ADDON_DESC = "Adds example modules into Vertex Client PE."; //Your addon's description
+const ADDON_AUTHOR = "Xx_TheLegend27_xX"; //Your addon's author (type your name here)
 const ADDON_VERSION = "1.0"; //Your addon's version
-const TARGET_VERSION = "1.9"; //Your addon's target Vertex Client PE version (in this case we use Vertex Client PE v1.0.1)
+const TARGET_VERSION = "2.1"; //Your addon's target Vertex Client PE version (in this case we use Vertex Client PE v2.1)
 
 var modules = [];
 var songs = [];
@@ -149,10 +150,10 @@ Launcher.isMcpeMaster();
 
 function addonLoadHook() {
 	if(Launcher.isBlockLauncher() || Launcher.isToolbox()) {
-		net.zhuoweizhang.mcpelauncher.ScriptManager.callScriptMethod("registerAddon", [ADDON_NAME, ADDON_DESC, ADDON_VERSION, TARGET_VERSION, modules, songs, tiles]);
+		net.zhuoweizhang.mcpelauncher.ScriptManager.callScriptMethod("registerAddon", [ADDON_NAME, ADDON_DESC, ADDON_VERSION, TARGET_VERSION, modules, songs, tiles, ADDON_AUTHOR]);
 	}
 	if(Launcher.isMcpeMaster()) {
-		com.mcbox.pesdk.mcpelauncher.ScriptManager.callScriptMethod("registerAddon", [ADDON_NAME, ADDON_DESC, ADDON_VERSION, TARGET_VERSION, modules, songs, tiles]);
+		com.mcbox.pesdk.mcpelauncher.ScriptManager.callScriptMethod("registerAddon", [ADDON_NAME, ADDON_DESC, ADDON_VERSION, TARGET_VERSION, modules, songs, tiles, ADDON_AUTHOR]);
 	}
 }
 

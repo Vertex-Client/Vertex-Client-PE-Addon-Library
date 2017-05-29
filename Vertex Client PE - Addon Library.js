@@ -94,8 +94,8 @@ getSettingsLayout: function() {
 onModDialogDismiss: function() {
   //this will be called when an user closes a mod's ... dialog
 },
-canBypassYesCheatPlus: function() {
-  return false; //if the mod should be blocked by YesCheat+
+canBypassBypass: function() {
+  return false; //if the mod should be blocked by Bypass
 }
 
 If you want to store a variable in a module, simply add it like this: yourVariableName: yourVariableValue just like other parameters.

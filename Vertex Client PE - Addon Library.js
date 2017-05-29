@@ -24,7 +24,7 @@ var Launcher = {
 function Song(songTitle, songArtist, songUrl, songGenre) {
     this.title = songTitle || "Unknown";
     this.artist = songArtist || "Unknown";
-	this.genre = songGenre || "Unknown";
+    this.genre = songGenre || "Unknown";
     this.url = songUrl;
 }
 
@@ -36,7 +36,7 @@ const ADDON_NAME = "Example addon"; //Your addon's name
 const ADDON_DESC = "Adds example modules into Vertex Client PE."; //Your addon's description
 const ADDON_AUTHOR = "Xx_TheLegend27_xX"; //Your addon's author (type your name here)
 const ADDON_VERSION = "1.0"; //Your addon's version
-const TARGET_VERSION = "2.1"; //Your addon's target Vertex Client PE version (in this case we use Vertex Client PE v2.1)
+const TARGET_VERSION = "2.4"; //Your addon's target Vertex Client PE version (in this case we use Vertex Client PE v2.1)
 
 var modules = [];
 var songs = [];
@@ -44,9 +44,9 @@ var tiles = [];
 
 const Category = {
 	COMBAT: 0,
-	BUILDING: 1,
+	WORLD: 1,
 	MOVEMENT: 2,
-	CHAT: 3,
+	PLAYER: 3,
 	MISC: 4
 }
 

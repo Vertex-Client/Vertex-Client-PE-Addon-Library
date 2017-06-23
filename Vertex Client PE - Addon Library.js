@@ -94,7 +94,7 @@ getSettingsLayout: function() {
 onModDialogDismiss: function() {
   //this will be called when an user closes a mod's ... dialog
 },
-canBypassBypass: function() {
+isBlockedByBypass: function() {
   return false; //if the mod should be blocked by Bypass
 }
 

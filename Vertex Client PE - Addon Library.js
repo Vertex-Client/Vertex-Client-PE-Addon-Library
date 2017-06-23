@@ -36,7 +36,7 @@ const ADDON_NAME = "Example addon"; //Your addon's name
 const ADDON_DESC = "Adds example modules into Vertex Client PE."; //Your addon's description
 const ADDON_AUTHOR = "Xx_TheLegend27_xX"; //Your addon's author (type your name here)
 const ADDON_VERSION = "1.0"; //Your addon's version
-const TARGET_VERSION = "2.4"; //Your addon's target Vertex Client PE version (in this case we use Vertex Client PE v2.1)
+const TARGET_VERSION = "2.4"; //Your addon's target Vertex Client PE version (in this case we use Vertex Client PE v2.4)
 
 var modules = [];
 var songs = [];
@@ -124,8 +124,14 @@ registerModule(secondExampleModule);
 Other functions and variables you can use in your addon are the following:
 ##################################
 callFunction(functionName, propArray);
->> Example: callFunction("nuke", [getPlayerX(), getPlayerY(), getPlayerZ(), 3, "cube"]); <<
-^^ In this example it will call Vertex Client PE's nuke function without having to copy the whole function into your addon. This also works for other functions. ^^
+>> Example: callFunction("newLevel", []); <<
+^^ In this example it will call newLevel in all scripts. This also works for other functions. ^^
+!! Make sure to put the parameters in an array, otherwise it won't work!
+----------------------------------
+callVertexFunction(functionName, propArray);
+>> Example: callVertexFunction("nuke", [getPlayerX(), getPlayerY(), getPlayerZ(), 3, "cube"]); <<
+^^ In this example it will call Vertex Client PE's 'VertexClientPE.nuke' function without having to copy the whole function into your addon. This also works for other functions. ^^
+** Supported since Vertex Client PE v2.4
 !! Make sure to put the parameters in an array, otherwise it won't work!
 ----------------------------------
 Launcher.isBlockLauncher();
@@ -189,4 +195,8 @@ function callFunction(functionName, propArray) {
 	if(Launcher.isMcpeMaster()) {
 		com.mcbox.pesdk.mcpelauncher.ScriptManager.callScriptMethod(functionName, propArray);
 	}
+}
+
+function callVertexFunction(functionName, args) {
+	callFunction("callVertexFunctionCallback", [functionName, args]);
 }
